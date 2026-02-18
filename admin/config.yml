@@ -1,0 +1,23 @@
+backend:
+  name: git-gateway
+  branch: main # Mude para master se seu branch for master
+
+media_folder: "assets/img/uploads" # Onde as imagens vão ficar
+public_folder: "/assets/img/uploads"
+
+collections:
+  - name: "posts"
+    label: "Traduções"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
+      - {label: "Título do Jogo", name: "title", widget: "string"}
+      - {label: "Data de Postagem", name: "date", widget: "datetime"}
+      - {label: "Capa do Jogo", name: "image", widget: "image"}
+      - {label: "Plataforma (Tags)", name: "tags", widget: "select", options: ["SNES", "Mega Drive", "PS1", "PS2", "GBA", "PC", "N64"], multiple: true}
+      - {label: "Grupo/Tradutor", name: "author", widget: "string", default: "Desconhecido"}
+      - {label: "Link do Patch (Seu Site/GitHub)", name: "link_patch", widget: "string", required: false}
+      - {label: "Link da ROM (Archive.org)", name: "link_rom", widget: "string", required: false}
+      - {label: "Sinopse e Detalhes", name: "body", widget: "markdown"}
